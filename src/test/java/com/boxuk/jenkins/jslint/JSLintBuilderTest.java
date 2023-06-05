@@ -1,6 +1,6 @@
 package com.boxuk.jenkins.jslint;
-import com.gargoylesoftware.htmlunit.html.HtmlForm;
-import com.gargoylesoftware.htmlunit.html.HtmlInput;
+import org.htmlunit.html.HtmlForm;
+import org.htmlunit.html.HtmlInput;
 import hudson.model.Descriptor;
 import hudson.model.FreeStyleProject;
 import hudson.tasks.Builder;
@@ -30,13 +30,13 @@ public class JSLintBuilderTest extends HudsonTestCase {
 
         HtmlForm form = webClient.goTo(project.getUrl() + "/configure").getFormByName("config");
         HtmlInput includePattern = form.getInputByName("jslint.includePattern");
-        includePattern.setValueAttribute("lib/**/*.js");
+        includePattern.setValue("lib/**/*.js");
 
         HtmlInput excludePattern = form.getInputByName("jslint.excludePattern");
-        excludePattern.setValueAttribute("lib/**/foobar.js");
+        excludePattern.setValue("lib/**/foobar.js");
 
         HtmlInput logfile = form.getInputByName("jslint.logfile");
-        logfile.setValueAttribute("jslint-output.xml");
+        logfile.setValue("jslint-output.xml");
 
         submit(form);
 
